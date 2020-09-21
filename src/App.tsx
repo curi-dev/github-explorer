@@ -9,7 +9,7 @@ const App = () => {
         <>
             <BrowserRouter>
                 <Routes />
-          </BrowserRouter>
+            </BrowserRouter>
             <GlobalStyle />
       </>
     );

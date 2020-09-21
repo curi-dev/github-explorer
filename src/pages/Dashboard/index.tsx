@@ -1,4 +1,5 @@
 import React, { useState, FormEvent, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import { FiChevronRight } from 'react-icons/fi';
 
 import api from '../../services/api';
@@ -57,7 +58,7 @@ const Dashboard: React.FunctionComponent = () => {
       setRepositories([...repositories, repository]);
 
       setInputError('');
-    } catch (error) {
+    } catch (err) {
       setInputError('Repositório não encontrado.');
     }
   }
@@ -79,7 +80,7 @@ const Dashboard: React.FunctionComponent = () => {
       {inputError && <Error>{inputError}</Error>}
       <Repository>
         {repositories.map(repository => (
-          <a href="repo" key={repository.full_name}>
+          <Link key={repository.full_name} to={`repositories/${repository.full_name}`}>
             <img
               src={repository.owner.avatar_url}
               alt={repository.owner.login}
@@ -89,7 +90,7 @@ const Dashboard: React.FunctionComponent = () => {
               <p>{repository.description}</p>
             </div>
             <FiChevronRight size={20} />
-          </a>
+          </Link>
         ))}
       </Repository>
     </>
